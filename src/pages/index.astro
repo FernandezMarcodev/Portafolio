@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout title="Marco Valentín Fernández | Desarrollador Backend y QA Tester">
+	<main>
+		<Hero />
+		<About />
+		<Skills />
+		<Projects />
+		<Contact />
+	</main>
+</Layout>
+
+<script>
+	// Simple Intersection Observer for reveal animations
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('active');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.reveal').forEach(el => {
+		observer.observe(el);
+	});
+</script>
+
+<style is:global>
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.reveal.active {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>

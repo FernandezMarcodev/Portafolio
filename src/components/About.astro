@@ -1,0 +1,207 @@
+---
+
+---
+
+<section id="about" class="about reveal">
+  <div class="about-container">
+    <div class="about-image">
+      <img
+        src="/assets/images/about-me.jpeg"
+        alt="Marco Valentín Fernández - Sobre Mí"
+      />
+    </div>
+    <div class="about-text">
+      <h2 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h2>
+      <p
+        data-es="Soy estudiante de Licenciatura en Informática y Analista en Informática en la Universidad Nacional del Oeste (UNO). Mi pasión reside en la creación de sistemas robustos y eficientes en el backend, garantizando siempre la calidad a través de procesos rigurosos de testing y QA."
+        data-en="I am a Computer Science and Systems Analyst student at Universidad Nacional del Oeste (UNO). My passion lies in building robust and efficient backend systems, always ensuring quality through rigorous testing and QA processes."
+      >
+        Soy estudiante de <strong>Licenciatura en Informática</strong> y <strong
+          >Analista en Informática</strong
+        > en la <strong>Universidad Nacional del Oeste (UNO)</strong>. Mi pasión
+        reside en la creación de sistemas robustos y eficientes en el backend,
+        garantizando siempre la calidad a través de procesos rigurosos de
+        testing y QA.
+      </p>
+      <br />
+      <p
+        data-es="Tengo una formación sólida en Ingeniería de Software, abarcando desde el modelado UML y el diseño de sistemas hasta la ingeniería de requerimientos, despliegue y validación. Me considero una persona curiosa que disfruta resolviendo problemas complejos con soluciones elegantes y escalables."
+        data-en="I have a solid background in Software Engineering, covering everything from UML modeling and system design to requirements engineering, deployment, and validation. I consider myself a curious person who enjoys solving complex problems with elegant and scalable solutions."
+      >
+        Tengo una formación sólida en <strong>Ingeniería de Software</strong>,
+        abarcando desde el modelado UML y el diseño de sistemas hasta la
+        ingeniería de requerimientos, despliegue y validación. Me considero una
+        persona curiosa que disfruta resolviendo problemas complejos con
+        soluciones elegantes y escalables.
+      </p>
+
+      <div class="about-highlights">
+        <div class="highlight">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path
+                d="M6 12v5c3 3 9 3 12 0v-5"></path></svg
+            >
+          </span>
+          <p
+            data-es="<strong>Educación</strong><br>Licenciatura en Informática (UNO)"
+            data-en="<strong>Education</strong><br>B.Sc. in Computer Science (UNO)"
+          >
+            <strong>Educación</strong><br />Licenciatura en Informática (UNO)
+          </p>
+        </div>
+        <div class="highlight">
+          <span class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><circle cx="11" cy="11" r="8"></circle><line
+                x1="21"
+                y1="21"
+                x2="16.65"
+                y2="16.65"></line></svg
+            >
+          </span>
+          <p
+            data-es="<strong>Enfoque</strong><br>Backend y Automatización QA"
+            data-en="<strong>Focus</strong><br>Backend & QA Automation"
+          >
+            <strong>Enfoque</strong><br />Backend y Automatización QA
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 120px 20px;
+    background: linear-gradient(
+      135deg,
+      var(--bg-secondary) 0%,
+      rgba(22, 27, 34, 0.5) 100%
+    );
+    border-radius: 40px;
+    margin: 50px auto;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-image img {
+    border-radius: 30px;
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(178, 226, 162, 0.2);
+    border: 2px solid var(--accent-green);
+    transition: var(--transition);
+    animation: imagePulse 3s ease-in-out infinite;
+  }
+
+  @keyframes imagePulse {
+    0%, 100% {
+      box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(178, 226, 162, 0.2);
+    }
+    50% {
+      box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8), 0 0 50px rgba(178, 226, 162, 0.35);
+    }
+  }
+
+  .about-image img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(178, 226, 162, 0.4);
+  }
+
+  .about-text h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 3.5rem;
+    background: linear-gradient(
+      90deg,
+      var(--accent-green),
+      var(--text-primary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .about-text p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .about-highlights {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .highlight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    flex: 1;
+    transition: var(--transition);
+  }
+
+  .highlight:hover {
+    background: rgba(178, 226, 162, 0.05);
+    border-color: var(--accent-green);
+    transform: translateY(-5px);
+  }
+
+  .highlight .icon {
+    font-size: 0;
+    width: 32px;
+    height: 32px;
+    color: var(--accent-green);
+  }
+
+  .highlight .icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .highlight p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 900px) {
+    .about {
+      padding: 80px 20px;
+    }
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .about-highlights {
+      flex-direction: column;
+    }
+  }
+</style>

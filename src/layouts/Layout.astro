@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Portafolio Profesional de Marco Valentín Fernández - Desarrollador Backend | QA Tester" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+	</head>
+	<body>
+		<header>
+			<nav>
+				<div class="logo">Mvfdez</div>
+				<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<ul class="nav-links" id="navLinks">
+					<li><a href="#about" data-es="Sobre Mí" data-en="About Me">Sobre Mí</a></li>
+					<li><a href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+					<li><a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+					<li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+					<li>
+						<button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
+							<span class="lang-flag">🌐</span>
+							<span class="lang-label">EN</span>
+						</button>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<slot />
+		<footer style="padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-secondary);">
+		<p data-es="&copy; 2026 Marco Valentín Fernández. Todos los derechos reservados." data-en="&copy; 2026 Marco Valentín Fernández. All rights reserved.">&copy; 2026 Marco Valentín Fernández. Todos los derechos reservados.</p>
+
+		<script>
+			// Mobile menu toggle
+			const menuToggle = document.getElementById('menuToggle') as HTMLButtonElement | null;
+			const navLinks = document.getElementById('navLinks') as HTMLElement | null;
+			const body = document.body;
+
+			if (menuToggle && navLinks) {
+				menuToggle.addEventListener('click', () => {
+					navLinks.classList.toggle('open');
+					menuToggle.classList.toggle('active');
+					body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+				});
+
+				// Close menu when clicking a link
+				navLinks.querySelectorAll('a').forEach((link: HTMLAnchorElement) => {
+					link.addEventListener('click', () => {
+						navLinks.classList.remove('open');
+						menuToggle.classList.remove('active');
+						body.style.overflow = '';
+					});
+				});
+			}
+
+			// Language toggle
+			const langToggle = document.getElementById('langToggle') as HTMLButtonElement | null;
+			let currentLang: 'es' | 'en' = 'es';
+
+			function updateLanguage(lang: 'es' | 'en'): void {
+				document.documentElement.lang = lang;
+				const label = langToggle?.querySelector('.lang-label');
+				if (label) label.textContent = lang === 'es' ? 'EN' : 'ES';
+
+				// Update text content
+				document.querySelectorAll('[data-es][data-en]').forEach((el: any) => {
+					const text = el.getAttribute(`data-${lang}`);
+					if (text) {
+						const tagIcon = el.querySelector('.tag-icon, .icon') as HTMLElement | null;
+						if (tagIcon) {
+							const iconHtml = tagIcon.outerHTML;
+							el.innerHTML = iconHtml + ' ' + text;
+						} else {
+							el.innerHTML = text;
+						}
+					}
+				});
+
+				// Update placeholders
+				document.querySelectorAll('[data-es-placeholder][data-en-placeholder]').forEach((el: any) => {
+					const placeholder = el.getAttribute(`data-${lang}-placeholder`);
+					if (placeholder) {
+						(el as HTMLInputElement | HTMLTextAreaElement).placeholder = placeholder;
+					}
+				});
+			}
+
+			if (langToggle) {
+				langToggle.addEventListener('click', () => {
+					currentLang = currentLang === 'es' ? 'en' : 'es';
+					updateLanguage(currentLang);
+				});
+			}
+		</script>
+	</body>
+</html>

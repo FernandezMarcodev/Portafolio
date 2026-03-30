@@ -1,0 +1,218 @@
+---
+const projects = [
+  {
+    name: {
+      es: "Sistema de Gestión de Requerimientos",
+      en: "Requirements Management System",
+    },
+    description: {
+      es: "Aplicación para el seguimiento de requerimientos de software basada en estándares IEEE 830.",
+      en: "Application for tracking software requirements based on IEEE 830 standards.",
+    },
+    techStack: ["Python", "FastAPI", "React", "PostgreSQL"],
+    repo: "https://github.com/MvFdez/requirements-manager",
+    img: "/assets/images/project1.jpeg",
+  },
+  {
+    name: {
+      es: "Automatización de Testing QA",
+      en: "QA Testing Automation",
+    },
+    description: {
+      es: "Framework de automatización con Selenium para validación de flujos críticos en sistemas bancarios.",
+      en: "Automation framework with Selenium for critical flow validation in banking systems.",
+    },
+    techStack: ["Python", "Selenium", "Docker", "Git"],
+    repo: "https://github.com/MvFdez/qa-automation-framework",
+    img: "/assets/images/project2.jpeg",
+  },
+];
+---
+
+<section id="projects" class="projects-section reveal">
+  <div class="projects-header">
+    <h2 data-es="Proyectos Destacados" data-en="Featured Projects">
+      Proyectos Destacados
+    </h2>
+    <p
+      data-es="Una selección de trabajos que demuestran mis habilidades en desarrollo y calidad."
+      data-en="A selection of works that demonstrate my development and quality skills."
+    >
+      Una selección de trabajos que demuestran mis habilidades en desarrollo y
+      calidad.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    {
+      projects.map((project) => (
+        <div class="project-card">
+          <div class="project-image">
+            <img src={project.img} alt={project.name.es} loading="lazy" />
+            <div class="project-overlay">
+              <a
+                href={project.repo}
+                target="_blank"
+                class="overlay-btn"
+                data-es="Ir al repositorio"
+                data-en="Go to repository"
+              >
+                Ir al repositorio
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              {project.techStack.map((tech) => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+            <h3 data-es={project.name.es} data-en={project.name.en}>
+              {project.name.es}
+            </h3>
+            <p
+              data-es={project.description.es}
+              data-en={project.description.en}
+            >
+              {project.description.es}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding-bottom: 200px;
+  }
+
+  .projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .projects-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 40px;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    border-color: rgba(178, 226, 162, 0.2);
+  }
+
+  .project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.1);
+  }
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .overlay-btn {
+    padding: 14px 28px;
+    background: var(--accent-green);
+    color: var(--bg-color);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: var(--transition);
+  }
+
+  .overlay-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  .project-info {
+    padding: 30px;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-green);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .project-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .project-info p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
