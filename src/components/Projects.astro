@@ -2,29 +2,31 @@
 const projects = [
   {
     name: {
-      es: "Sistema de Gestión de Requerimientos",
-      en: "Requirements Management System",
+      es: "Bot de WhatsApp - Sistema de Turnos",
+      en: "WhatsApp Bot - Appointment System",
     },
     description: {
-      es: "Aplicación para el seguimiento de requerimientos de software basada en estándares IEEE 830.",
-      en: "Application for tracking software requirements based on IEEE 830 standards.",
+      es: "Bot de WhatsApp que gestiona los turnos de una barbería, brindando disponibilidad 24/7. Permite agendar, cancelar y consultar turnos de forma automatizada.",
+      en: "WhatsApp bot that manages barbershop appointments, providing 24/7 availability. Allows scheduling, canceling and querying appointments automatically.",
     },
-    techStack: ["Python", "FastAPI", "React", "PostgreSQL"],
-    repo: "https://github.com/MvFdez/requirements-manager",
-    img: "/assets/images/project1.jpeg",
+    techStack: ["Python", "FastAPI", "WhatsApp API TWILIO", "PostgreSQL"],
+    repo: "https://github.com/FernandezMarcodev/whatsapp-bot",
+    img: "/assets/images/project-barberbot.jpeg",
+    docs: "/assets/docs/barber-bot-docs.pdf",
   },
   {
     name: {
-      es: "Automatización de Testing QA",
-      en: "QA Testing Automation",
+      es: "Carritos Abandonados - Tienda Nube",
+      en: "Abandoned Carts - Tienda Nube",
     },
     description: {
-      es: "Framework de automatización con Selenium para validación de flujos críticos en sistemas bancarios.",
-      en: "Automation framework with Selenium for critical flow validation in banking systems.",
+      es: "Sistema que guarda los carritos abandonados y envía notificaciones a los usuarios. Consume la API de Tienda Nube para sincronizar productos y recuperar ventas.",
+      en: "System that saves abandoned carts and sends notifications to users. Consumes the Tienda Nube API to sync products and recover sales.",
     },
-    techStack: ["Python", "Selenium", "Docker", "Git"],
-    repo: "https://github.com/MvFdez/qa-automation-framework",
-    img: "/assets/images/project2.jpeg",
+    techStack: ["Python", "FastAPI", "Tienda Nube API", "PostgreSQL"],
+    repo: "https://github.com/FernandezMarcodev/Abandoned-Carts",
+    img: "/assets/images/project-abandonedcarts.jpeg",
+    docs: "/assets/docs/abandoned-carts-docs.pdf",
   },
 ];
 ---
@@ -49,19 +51,28 @@ const projects = [
         <div class="project-card">
           <div class="project-image">
             <img src={project.img} alt={project.name.es} loading="lazy" />
-            <div class="project-overlay">
+          </div>
+          <div class="project-info">
+            <div class="project-buttons">
               <a
                 href={project.repo}
                 target="_blank"
-                class="overlay-btn"
-                data-es="Ir al repositorio"
-                data-en="Go to repository"
+                class="btn-repo"
+                data-es="Link al repositorio"
+                data-en="Link to repository"
               >
-                Ir al repositorio
+                Link al repositorio
+              </a>
+              <a
+                href={project.docs}
+                target="_blank"
+                class="btn-docs"
+                data-es="Ver documentación"
+                data-en="View documentation"
+              >
+                Ver documentación
               </a>
             </div>
-          </div>
-          <div class="project-info">
             <div class="project-tags">
               {project.techStack.map((tech) => (
                 <span class="tag">{tech}</span>
@@ -139,39 +150,45 @@ const projects = [
     transform: scale(1.1);
   }
 
-  .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(13, 17, 23, 0.85);
+  .project-buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-repo,
+  .btn-docs {
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
     transition: var(--transition);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
   }
 
-  .project-card:hover .project-overlay {
-    opacity: 1;
-  }
-
-  .overlay-btn {
-    padding: 14px 28px;
+  .btn-repo {
     background: var(--accent-green);
     color: var(--bg-color);
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: var(--transition);
   }
 
-  .overlay-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px var(--accent-glow);
+  .btn-repo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(178, 226, 162, 0.4);
+  }
+
+  .btn-docs {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-docs:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-green);
+    transform: translateY(-2px);
   }
 
   .project-info {
