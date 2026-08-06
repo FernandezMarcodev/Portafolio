@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
 import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 ---
 
-<Layout title="Marco Valentín Fernández | Desarrollador Backend y QA Tester">
+<Layout title="Marco Valentín Fernández | Desarrollador Backend">
 	<main>
 		<Hero />
-		<About />
 		<Skills />
 		<Projects />
 		<Contact />
@@ -49,4 +47,15 @@ import Contact from '../components/Contact.astro';
 		opacity: 1;
 		transform: translateY(0);
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.reveal {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+	}
 </style>
+<noscript>
+	<style> .reveal { opacity: 1 !important; transform: none !important; } </style>
+</noscript>

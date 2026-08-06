@@ -3,7 +3,7 @@
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

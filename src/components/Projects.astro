@@ -96,7 +96,8 @@ const projects = [
 
 <style>
   .projects-section {
-    padding-bottom: 200px;
+    padding: 80px 0 160px;
+    max-width: 960px;
   }
 
   .projects-header {
@@ -106,31 +107,32 @@ const projects = [
 
   .projects-header p {
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    font: var(--md-sys-typescale-body-large);
     max-width: 600px;
     margin: 0 auto;
   }
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    gap: 32px;
   }
 
   .project-card {
-    background: var(--card-bg);
-    border-radius: 24px;
+    background: var(--md-sys-color-surface-container);
+    border-radius: var(--md-sys-shape-xl);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--md-sys-color-outline-variant);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    box-shadow: var(--md-sys-elevation-1);
   }
 
   .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
-    border-color: rgba(178, 226, 162, 0.2);
+    transform: translateY(-8px);
+    box-shadow: var(--md-sys-elevation-4);
+    border-color: var(--accent-green);
   }
 
   .project-image {
@@ -147,7 +149,7 @@ const projects = [
   }
 
   .project-card:hover .project-image img {
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 
   .project-buttons {
@@ -160,9 +162,8 @@ const projects = [
   .btn-repo,
   .btn-docs {
     padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.9rem;
+    border-radius: var(--md-sys-shape-lg);
+    font: var(--md-sys-typescale-label-large);
     transition: var(--transition);
     text-align: center;
     flex: 1;
@@ -170,66 +171,92 @@ const projects = [
   }
 
   .btn-repo {
-    background: var(--accent-green);
-    color: var(--bg-color);
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
   }
 
   .btn-repo:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px -10px rgba(178, 226, 162, 0.4);
+    box-shadow: var(--md-sys-elevation-2);
   }
 
   .btn-docs {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--md-sys-color-surface-container-high);
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--md-sys-color-outline-variant);
   }
 
   .btn-docs:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--md-sys-color-surface-container-highest);
     border-color: var(--accent-green);
     transform: translateY(-2px);
   }
 
   .project-info {
-    padding: 30px;
+    padding: 28px;
     flex: 1;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 20px;
   }
 
   .tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: rgba(255, 255, 255, 0.05);
+    font: var(--md-sys-typescale-label-medium);
+    background: var(--md-sys-color-surface-container-high);
     color: var(--accent-green);
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: var(--md-sys-shape-sm);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .project-info h3 {
-    font-size: 1.8rem;
+    font: var(--md-sys-typescale-headline-small);
     margin-bottom: 12px;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-primary);
   }
 
   .project-info p {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font: var(--md-sys-typescale-body-medium);
     line-height: 1.6;
   }
 
   @media (max-width: 768px) {
+    .projects-section {
+      padding: 56px 0 96px;
+    }
+
     .projects-grid {
       grid-template-columns: 1fr;
+    }
+
+    .projects-header {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects-section {
+      padding: 48px 0 80px;
+    }
+
+    .project-info {
+      padding: 20px 16px;
+    }
+
+    .project-image {
+      height: 200px;
+    }
+
+    .btn-repo,
+    .btn-docs {
+      min-width: 100%;
     }
   }
 </style>

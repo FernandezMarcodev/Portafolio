@@ -6,7 +6,10 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "Portafolio Profesional de Marco Valentín Fernández - Desarrollador Backend | QA Tester" } = Astro.props;
+const { title, description = "Portafolio Profesional de Marco Valentín Fernández - Desarrollador Backend" } = Astro.props;
+const siteTitle = title;
+const siteDescription = description;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://fernandezmarcodev.com/").href;
 ---
 
 <!doctype html>
@@ -16,35 +19,102 @@ const { title, description = "Portafolio Profesional de Marco Valentín Fernánd
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-
+		<meta name="theme-color" content="#0d1117" />
+		<title>{siteTitle}</title>
+		<meta name="description" content={siteDescription} />
+		<meta name="author" content="Marco Valentín Fernández" />
+		<link rel="canonical" href={canonicalURL} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Marco Valentín Fernández" />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<script is:inline>
+			(function () {
+				const saved = localStorage.getItem('theme');
+				const theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+				document.documentElement.setAttribute('data-theme', theme);
+				document.documentElement.style.colorScheme = theme;
+			})();
+		</script>
 	</head>
 	<body>
 		<header>
 			<nav>
-				<div class="logo">FernandezMarcodev</div>
-				<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
+				<div class="sidebar-top">
+					<div class="logo">FernandezMarcodev</div>
+					<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+				</div>
 				<ul class="nav-links" id="navLinks">
-					<li><a href="#about" data-es="Sobre Mí" data-en="About Me">Sobre Mí</a></li>
+					<li><a href="#hero" data-es="Inicio" data-en="Home">Inicio</a></li>
 					<li><a href="#skills" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
 					<li><a href="#projects" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
 					<li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
-					<li>
-						<button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
-							<span class="lang-flag">🌐</span>
-							<span class="lang-label">EN</span>
-						</button>
-					</li>
 				</ul>
+				<div class="sidebar-controls">
+					<button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+						<span class="theme-icon">☾</span>
+					</button>
+					<button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma">
+						<span class="lang-flag">🌐</span>
+						<span class="lang-label">EN</span>
+					</button>
+				</div>
+				<div class="sidebar-meta">
+					<span class="meta-label" data-es="Ubicación" data-en="Location">Ubicación</span>
+					<span class="meta-item" title="Ubicación">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						<span data-es="Merlo, Buenos Aires, Argentina" data-en="Merlo, Buenos Aires, Argentina">Merlo, Buenos Aires, Argentina</span>
+					</span>
+					<span class="meta-label" data-es="Disponibilidad" data-en="Availability">Disponibilidad</span>
+					<span class="meta-item" title="Disponibilidad">
+						<span class="status-dot"></span>
+						<span data-es="Disponible — Full Time" data-en="Available — Full Time">Disponible — Full Time</span>
+					</span>
+					<span class="meta-label" data-es="Redes" data-en="Social">Redes</span>
+					<span class="meta-item">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.16c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.26 5.66.41.36.78 1.06.78 2.14v3.18c0 .31.21.67.79.56A11.5 11.5 0 0 0 12 .472z"/>
+						</svg>
+						<a href="https://github.com/FernandezMarcodev" target="_blank" rel="noopener noreferrer">GitHub</a>
+					</span>
+					<span class="meta-item">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6V24H.2V8zm7.4 0h4.4v2.19h.06c.61-1.16 2.1-2.38 4.33-2.38 4.63 0 5.48 3.05 5.48 7.01V24h-4.6v-7.96c0-1.9-.03-4.34-2.64-4.34-2.65 0-3.05 2.06-3.05 4.2V24H7.6V8z"/>
+						</svg>
+						<a href="https://www.linkedin.com/in/marco-valentin-fernandez-741222352/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					</span>
+					<span class="meta-label" data-es="Contacto" data-en="Contact">Contacto</span>
+					<span class="meta-item" title="Email">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+							<path d="m22 7-10 6L2 7"></path>
+						</svg>
+						<a href="mailto:fernandezmarcovalentin@gmail.com">fernandezmarcovalentin@gmail.com</a>
+					</span>
+					<span class="meta-item" title="WhatsApp">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 5.83 2.42 8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/>
+						</svg>
+						<a href="https://wa.me/5491159408162" target="_blank" rel="noopener noreferrer">+54 9 11 5940 8162</a>
+					</span>
+				</div>
 			</nav>
 		</header>
 		<slot />
-		<footer style="padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-secondary);">
+		<footer style="padding: 50px 24px; text-align: center; border-top: 1px solid var(--md-sys-color-outline-variant); color: var(--text-secondary);">
 		<p data-es="&copy; 2026 Marco Valentín Fernández. Todos los derechos reservados." data-en="&copy; 2026 Marco Valentín Fernández. All rights reserved.">&copy; 2026 Marco Valentín Fernández. Todos los derechos reservados.</p>
 
 		<script>
@@ -73,6 +143,26 @@ const { title, description = "Portafolio Profesional de Marco Valentín Fernánd
 			// Language toggle
 			const langToggle = document.getElementById('langToggle') as HTMLButtonElement | null;
 			let currentLang: 'es' | 'en' = 'es';
+
+			// Theme toggle
+			const themeToggle = document.getElementById('themeToggle') as HTMLButtonElement | null;
+			const themeIcon = themeToggle?.querySelector('.theme-icon') as HTMLElement | null;
+
+			function setTheme(theme: 'light' | 'dark'): void {
+				document.documentElement.setAttribute('data-theme', theme);
+				document.documentElement.style.colorScheme = theme;
+				localStorage.setItem('theme', theme);
+				if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀' : '☾';
+			}
+
+			if (themeToggle) {
+				themeIcon!.textContent =
+					document.documentElement.getAttribute('data-theme') === 'light' ? '☾' : '☀';
+				themeToggle.addEventListener('click', () => {
+					const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+					setTheme(current);
+				});
+			}
 
 			function updateLanguage(lang: 'es' | 'en'): void {
 				document.documentElement.lang = lang;

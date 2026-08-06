@@ -90,7 +90,7 @@ const whatsapp = `https://wa.me/5491159408162`;
         <h3 data-es="Enviame un mensaje" data-en="Send me a message">
           Enviame un mensaje
         </h3>
-        <form id="contactForm">
+        <form id="contactForm" action="https://formspree.io/f/mrpzgown" method="POST">
           <div class="input-group">
             <label for="from_name" data-es="Nombre" data-en="Name">Nombre</label
             >
@@ -146,28 +146,6 @@ const whatsapp = `https://wa.me/5491159408162`;
 </section>
 
 <script>
-  const CONFIG = {
-    PUBLIC_KEY: "fiHO4iDbvyGhMSNdH",
-    SERVICE_ID: "service_4q7xrvi",
-    TEMPLATE_ID: "template_grjnf3o",
-  };
-
-  const loadEmailJS = (): Promise<any> => {
-    return new Promise((resolve, reject) => {
-      const win = window as any;
-      if (win.emailjs) {
-        resolve(win.emailjs);
-        return;
-      }
-      const script = document.createElement("script");
-      script.src =
-        "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
-      script.onload = () => resolve(win.emailjs);
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-  };
-
   const contactForm = document.getElementById(
     "contactForm",
   ) as HTMLFormElement | null;
@@ -177,42 +155,49 @@ const whatsapp = `https://wa.me/5491159408162`;
   const formStatus = document.getElementById(
     "formStatus",
   ) as HTMLElement | null;
+  const submitBtnOriginalHTML = submitBtn ? submitBtn.innerHTML : "";
 
   if (contactForm && submitBtn && formStatus) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const originalHTML = submitBtn.innerHTML;
+      const formData = new FormData(contactForm);
       const lang = document.documentElement.lang;
 
       submitBtn.innerHTML = lang === "es" ? "⏳ Enviando..." : "⏳ Sending...";
       submitBtn.disabled = true;
       formStatus.textContent = "";
+      formStatus.className = "";
 
       try {
-        const emailjsInstance = await loadEmailJS();
-        emailjsInstance.init(CONFIG.PUBLIC_KEY);
-        await emailjsInstance.sendForm(
-          CONFIG.SERVICE_ID,
-          CONFIG.TEMPLATE_ID,
-          contactForm,
-        );
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
 
-        formStatus.innerText =
-          lang === "es"
-            ? "✅ ¡Mensaje enviado con éxito!"
-            : "✅ Message sent successfully!";
-        formStatus.className = "form-status success";
-        contactForm.reset();
+        if (response.ok) {
+          formStatus.innerText =
+            lang === "es"
+              ? "✅ ¡Mensaje enviado con éxito!"
+              : "✅ Message sent successfully!";
+          formStatus.className = "form-status success";
+          contactForm.reset();
+        } else {
+          const data = await response.json().catch(() => null);
+          throw new Error(data?.errors?.[0]?.message || "Formspree error");
+        }
       } catch (error) {
-        console.error("EmailJS Error:", error);
+        console.error("Formspree Error:", error);
         formStatus.innerText =
           lang === "es"
-            ? "❌ Error al enviar. Revisá tu conexión o configuración."
-            : "❌ Error sending. Check your connection or configuration.";
+            ? "❌ Error al enviar el mensaje. Intentalo de nuevo."
+            : "❌ Error sending the message. Please try again.";
         formStatus.className = "form-status error";
       } finally {
-        submitBtn.innerHTML = originalHTML;
+        submitBtn.innerHTML = submitBtnOriginalHTML;
         submitBtn.disabled = false;
       }
     });
@@ -221,33 +206,31 @@ const whatsapp = `https://wa.me/5491159408162`;
 
 <style>
   .contact {
-    padding: 100px 20px;
-    background: linear-gradient(
-      180deg,
-      var(--bg-color) 0%,
-      var(--bg-secondary) 100%
-    );
-    border-radius: 40px;
-    margin: 50px auto 100px;
+    padding: 80px 0 100px;
+    background: transparent;
+    border-radius: var(--md-sys-shape-extra-large);
+    margin: 0 auto 60px;
+    max-width: 960px;
   }
 
   .contact-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
   .contact-header h2 {
-    font-size: 3.5rem;
     margin-bottom: 20px;
+    font: var(--md-sys-typescale-display-small);
+    font-weight: 700;
     background: linear-gradient(
       90deg,
-      var(--text-primary),
-      var(--text-secondary)
+      var(--accent-green),
+      var(--accent-purple)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .contact-header p {
-    font-size: 1.25rem;
+    font: var(--md-sys-typescale-body-large);
     color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto;
@@ -255,43 +238,44 @@ const whatsapp = `https://wa.me/5491159408162`;
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 48px;
     align-items: stretch;
   }
   .contact-methods {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
   }
   .method {
     display: flex;
     align-items: center;
-    gap: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 24px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 18px;
+    background: var(--md-sys-color-surface-container);
+    padding: 20px;
+    border-radius: var(--md-sys-shape-lg);
+    border: 1px solid var(--md-sys-color-outline-variant);
     transition: var(--transition);
   }
   .method:hover {
     border-color: var(--accent-green);
-    transform: translateX(10px);
-    background: rgba(178, 226, 162, 0.05);
+    transform: translateX(8px);
+    background: var(--md-sys-color-surface-container-high);
   }
   .method-icon {
-    font-size: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     color: var(--accent-green);
     flex-shrink: 0;
+    background: var(--md-sys-color-surface-container-high);
+    border-radius: var(--md-sys-shape-md);
   }
 
   .method-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .method-cv .method-icon {
@@ -300,60 +284,62 @@ const whatsapp = `https://wa.me/5491159408162`;
 
   .method-cv:hover {
     border-color: var(--accent-red);
-    background: rgba(255, 138, 138, 0.05);
+    background: var(--md-sys-color-surface-container-high);
   }
   .method-text span {
     display: block;
-    font-size: 0.8rem;
+    font: var(--md-sys-typescale-label-medium);
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
   }
   .method-text strong {
-    font-size: 1.1rem;
+    display: block;
+    margin-top: 2px;
+    font: var(--md-sys-typescale-title-medium);
     color: var(--text-primary);
     word-break: break-all;
   }
   .form-container {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--md-sys-color-surface-container);
+    padding: 32px;
+    border-radius: var(--md-sys-shape-extra-large);
+    border: 1px solid var(--md-sys-color-outline-variant);
     height: 100%;
     display: flex;
     flex-direction: column;
   }
   .form-container h3 {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+    font: var(--md-sys-typescale-headline-small);
+    margin-bottom: 28px;
     color: var(--accent-red);
   }
   .input-group {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
   .input-group label {
     display: block;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font: var(--md-sys-typescale-body-medium);
     color: var(--text-secondary);
   }
   .input-group input,
   .input-group textarea {
     width: 100%;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 16px;
-    border-radius: 12px;
-    color: white;
+    background: var(--md-sys-color-surface);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    padding: 14px 16px;
+    border-radius: var(--md-sys-shape-md);
+    color: var(--text-primary);
     font-family: inherit;
-    font-size: 1rem;
+    font: var(--md-sys-typescale-body-large);
     transition: var(--transition);
   }
   .input-group input:focus,
   .input-group textarea:focus {
     border-color: var(--accent-green);
     outline: none;
-    box-shadow: 0 0 15px var(--accent-glow);
+    box-shadow: var(--md-sys-elevation-2);
   }
   .input-group textarea {
     resize: none;
@@ -361,20 +347,19 @@ const whatsapp = `https://wa.me/5491159408162`;
   }
   .submit-btn {
     width: 100%;
-    padding: 18px;
-    background: var(--accent-green);
-    color: var(--bg-color);
+    padding: 16px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    border-radius: var(--md-sys-shape-lg);
+    font: var(--md-sys-typescale-label-large);
     cursor: pointer;
     transition: var(--transition);
     margin-top: auto;
   }
   .submit-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px -10px var(--accent-green);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-3);
   }
   .form-status {
     text-align: center;
@@ -390,6 +375,34 @@ const whatsapp = `https://wa.me/5491159408162`;
   @media (max-width: 900px) {
     .contact-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact {
+      padding: 48px 0 72px;
+      margin-bottom: 40px;
+    }
+
+    .contact-grid {
+      gap: 36px;
+    }
+
+    .form-container {
+      padding: 24px 18px;
+    }
+
+    .method {
+      padding: 16px;
+      gap: 14px;
+    }
+
+    .method:hover {
+      transform: none;
+    }
+
+    .contact-header {
+      margin-bottom: 36px;
     }
   }
 </style>

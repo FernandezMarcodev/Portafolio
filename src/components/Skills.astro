@@ -283,15 +283,11 @@ const engineeringSkills = [
 
 <style>
     .skills {
-        padding: 120px 20px;
-        background: linear-gradient(
-            135deg,
-            rgba(22, 27, 34, 0.5) 0%,
-            var(--bg-secondary) 100%
-        );
-        border-radius: 40px;
-        margin: 50px auto;
-        border: 1px solid rgba(255, 255, 255, 0.03);
+        padding: 80px 0;
+        background: transparent;
+        border-radius: var(--md-sys-shape-extra-large);
+        margin: 0 auto 40px;
+        max-width: 960px;
     }
 
     .skills-header {
@@ -300,19 +296,20 @@ const engineeringSkills = [
     }
 
     .skills-header h2 {
-        font-size: 3.5rem;
         margin-bottom: 16px;
+        font: var(--md-sys-typescale-display-small);
+        font-weight: 700;
         background: linear-gradient(
             90deg,
             var(--accent-green),
-            var(--text-primary)
+            var(--accent-purple)
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     .skills-header p {
-        font-size: 1.2rem;
+        font: var(--md-sys-typescale-body-large);
         color: var(--text-secondary);
         max-width: 620px;
         margin: 0 auto;
@@ -331,15 +328,15 @@ const engineeringSkills = [
         flex-direction: column;
     }
 
-    .column-title {
-        font-size: 1.1rem;
+.column-title {
+        font: var(--md-sys-typescale-title-small);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         color: var(--accent-green);
         margin-bottom: 28px;
         padding-bottom: 12px;
-        border-bottom: 1px solid rgba(178, 226, 162, 0.15);
+        border-bottom: 1px solid rgba(169, 232, 195, 0.15);
         text-align: center;
     }
 
@@ -358,9 +355,9 @@ const engineeringSkills = [
         align-items: center;
         justify-content: center;
         gap: 10px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 16px;
+        background: var(--md-sys-color-surface-container-high);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-lg);
         padding: 20px 12px;
         transition: var(--transition);
         cursor: default;
@@ -368,9 +365,10 @@ const engineeringSkills = [
     }
 
     .tool-card:hover {
-        background: rgba(178, 226, 162, 0.08);
+        background: var(--md-sys-color-surface-container-highest);
         border-color: var(--accent-green);
         transform: translateY(-4px);
+        box-shadow: var(--md-sys-elevation-2);
     }
 
     .tool-logo {
@@ -380,8 +378,7 @@ const engineeringSkills = [
     }
 
     .tool-name {
-        font-size: 0.88rem;
-        font-weight: 600;
+        font: var(--md-sys-typescale-body-medium);
         color: var(--text-primary);
         line-height: 1.2;
     }
@@ -398,17 +395,17 @@ const engineeringSkills = [
         display: flex;
         align-items: flex-start;
         gap: 16px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
+        background: var(--md-sys-color-surface-container);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-lg);
         padding: 18px 20px;
         transition: var(--transition);
         flex: 1;
     }
 
     .eng-card:hover {
-        background: rgba(178, 226, 162, 0.05);
-        border-color: rgba(178, 226, 162, 0.3);
+        background: var(--md-sys-color-surface-container-high);
+        border-color: var(--accent-green);
         transform: translateX(6px);
     }
 
