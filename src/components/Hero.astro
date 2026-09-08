@@ -25,13 +25,10 @@ const linkedin =
       </h2>
       <p
         class="tagline"
-        data-es="Estudiante de Licenciatura en Informática en la Universidad Nacional del Oeste (UNO). Enfoque en robustez, escalabilidad y calidad de software."
-        data-en="Computer Science student at Universidad National del Oeste (UNO). Focused on robustness, scalability, and software quality."
+        data-es="Analista en Informática recibido de la Universidad Nacional del Oeste (UNO) y estudiante de la Licenciatura en Informática. Enfoque en robustez, escalabilidad y calidad de software."
+        data-en="Computer Systems Analyst graduate from Universidad Nacional del Oeste (UNO) and Computer Science student. Focused on robustness, scalability, and software quality."
       >
-        Estudiante de Licenciatura en Informática en la <strong
-          >Universidad Nacional del Oeste (UNO)</strong
-        >.<br />
-        Enfoque en <strong>robustez, escalabilidad y calidad</strong> de software.
+        Analista en Informática recibido de la Universidad Nacional del Oeste (UNO) y estudiante de la Licenciatura en Informática. Enfoque en robustez, escalabilidad y calidad de software.
       </p>
 
       <div class="about-bio">
@@ -39,13 +36,13 @@ const linkedin =
           data-es="Mi pasión es crear sistemas backend robustos y escalables, con un enfoque constante en la calidad, la eficiencia y las buenas prácticas de ingeniería."
           data-en="My passion is building robust and scalable backend systems, with a constant focus on quality, efficiency, and good engineering practices."
         >
-          Mi pasión es crear sistemas <strong>backend robustos y escalables</strong>, con un enfoque constante en la <strong>calidad, la eficiencia y las buenas prácticas</strong> de ingeniería.
+          Mi pasión es crear sistemas backend robustos y escalables, con un enfoque constante en la calidad, la eficiencia y las buenas prácticas de ingeniería.
         </p>
         <p
           data-es="Con formación en Ingeniería de Software — desde diseño de sistemas hasta despliegue y validación — disfruto convertir problemas complejos en soluciones elegantes y eficientes."
           data-en="Trained in Software Engineering — from system design to deployment and validation — I enjoy turning complex problems into elegant, efficient solutions."
         >
-          Con formación en <strong>Ingeniería de Software</strong> — desde diseño de sistemas hasta despliegue y validación — disfruto convertir problemas complejos en <strong>soluciones elegantes y eficientes</strong>.
+          Con formación en Ingeniería de Software — desde diseño de sistemas hasta despliegue y validación — disfruto convertir problemas complejos en soluciones elegantes y eficientes.
         </p>
       </div>
 
@@ -74,7 +71,16 @@ const linkedin =
           </span>
           <div class="highlight-text">
             <strong data-es="Educación" data-en="Education">Educación</strong>
-            <p data-es="Licenciatura en Informática — Universidad Nacional del Oeste (UNO)" data-en="B.Sc. in Computer Science — Universidad Nacional del Oeste (UNO)">Licenciatura en Informática — Universidad Nacional del Oeste (UNO)</p>
+            <p data-es="Analista en Informática recibido — Universidad Nacional del Oeste (UNO)" data-en="Computer Systems Analyst graduate — Universidad Nacional del Oeste (UNO)">Analista en Informática recibido — Universidad Nacional del Oeste (UNO)</p>
+            <a
+              href="https://www.uno.edu.ar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="edu-link"
+              data-es="uno.edu.ar"
+              data-en="uno.edu.ar"
+              >uno.edu.ar</a
+            >
           </div>
         </div>
         <div class="highlight">
@@ -333,6 +339,18 @@ const linkedin =
     color: var(--text-secondary);
     margin: 0;
     line-height: 1.35;
+  }
+
+  .highlight-text .edu-link {
+    display: inline-block;
+    margin-top: 3px;
+    font: var(--md-sys-typescale-label-medium);
+    font-weight: 600;
+    color: var(--accent-green);
+  }
+
+  .highlight-text .edu-link:hover {
+    text-decoration: underline;
   }
 
   .hero-image {

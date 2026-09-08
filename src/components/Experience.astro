@@ -1,0 +1,427 @@
+---
+const experience = [
+  {
+    role: {
+      es: "Desarrollador Backend",
+      en: "Backend Developer",
+    },
+    company: {
+      es: "OnlyManager",
+      en: "OnlyManager",
+    },
+    url: "https://onlymanager.vip",
+    period: {
+      es: "Ago. 2026 — Actualidad",
+      en: "Aug. 2026 — Present",
+    },
+    description: {
+      es: "Desarrollo y mantenimiento de una plataforma SaaS de automatización para creadores de contenido, que en su primer mes en producción superó los 50 usuarios activos. Trabajo directamente sobre los ambientes de producción (Railway), brindo soporte técnico a los usuarios y participo en la investigación de las tecnologías que se integran al sistema.",
+      en: "Development and maintenance of a SaaS automation platform for content creators, which surpassed 50 active users during its first month in production. I work hands-on with the production environments (Railway), provide technical support to users, and take part in researching the technologies that get integrated into the system.",
+    },
+  },
+];
+---
+
+<section id="experience" class="experience">
+  <div class="experience-header">
+    <h2 data-es="Experiencia Profesional" data-en="Professional Experience">
+      Experiencia Profesional
+    </h2>
+    <p
+      data-es="Recorrido laboral reciente y proyectos profesionales."
+      data-en="Recent career history and professional projects."
+    >
+      Recorrido laboral reciente y proyectos profesionales.
+    </p>
+  </div>
+
+  <div class="timeline">
+    {
+      experience.map((job) => (
+        <div class="timeline-item">
+          <div class="timeline-rail">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="job-card">
+            <div class="job-head">
+              <div class="job-title">
+                <h3 data-es={job.role.es} data-en={job.role.en}>
+                  {job.role.es}
+                </h3>
+                <div class="job-company">
+                  <a
+                    href={job.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-es={job.company.es}
+                    data-en={job.company.en}
+                  >
+                    {job.company.es}
+                  </a>
+                  <span
+                    class="job-period"
+                    data-es={job.period.es}
+                    data-en={job.period.en}
+                  >
+                    {job.period.es}
+                  </span>
+                </div>
+              </div>
+              <div class="job-links">
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-pill"
+                  data-es="Ver la plataforma"
+                  data-en="View platform"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                  Ver la plataforma
+                </a>
+              </div>
+            </div>
+
+            <p
+              class="job-desc"
+              data-es={job.description.es}
+              data-en={job.description.en}
+            >
+              {job.description.es}
+            </p>
+
+            <ul class="job-bullets">
+              <li
+                data-es="Desarrollo de funcionalidades y tareas de investigación sobre las tecnologías implicadas en el sistema."
+                data-en="Feature development and research tasks on the technologies involved in the system."
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Desarrollo de funcionalidades y tareas de investigación sobre las tecnologías implicadas en el sistema.</span>
+              </li>
+              <li
+                data-es="Autenticación de usuarios, mensajería automática y automatización de procesos mediante integración con APIs de terceros."
+                data-en="User authentication, automated messaging and process automation through third-party API integrations."
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Autenticación de usuarios, mensajería automática y automatización de procesos mediante integración con APIs de terceros.</span>
+              </li>
+              <li
+                data-es="Organización del flujo de trabajo con metodología Kanban y control de las tareas mediante la herramienta Linear."
+                data-en="Workflow organization using the Kanban methodology and task tracking with Linear."
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Organización del flujo de trabajo con metodología Kanban y control de las tareas mediante la herramienta Linear.</span>
+              </li>
+              <li
+                data-es="Control de versiones con Git y GitHub: ramas, versionado y pull requests con revisión de código."
+                data-en="Version control with Git and GitHub: branches, releases and pull requests with code review."
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Control de versiones con Git y GitHub: ramas, versionado y pull requests con revisión de código.</span>
+              </li>
+              <li
+                data-es="Soporte técnico directo a usuarios y seguimiento permanente de los ambientes de producción (Railway)."
+                data-en="Direct technical support for users and ongoing monitoring of the production environments (Railway)."
+              >
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Soporte técnico directo a usuarios y seguimiento permanente de los ambientes de producción (Railway).</span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: 80px 0;
+    background: transparent;
+    border-radius: var(--md-sys-shape-extra-large);
+    margin: 0 auto 40px;
+    max-width: 960px;
+  }
+
+  .experience-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .experience-header h2 {
+    margin-bottom: 16px;
+    font: var(--md-sys-typescale-display-small);
+    font-weight: 700;
+    background: linear-gradient(
+      90deg,
+      var(--accent-green),
+      var(--accent-purple)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .experience-header p {
+    font: var(--md-sys-typescale-body-large);
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+  }
+
+  .timeline-rail {
+    flex: 0 0 28px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .timeline-rail::after {
+    content: "";
+    position: absolute;
+    top: 34px;
+    bottom: -24px;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--accent-green),
+      var(--accent-purple)
+    );
+    opacity: 0.5;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    margin-top: 22px;
+    border-radius: 50%;
+    background: var(--md-sys-color-surface);
+    border: 3px solid var(--accent-green);
+    box-shadow: 0 0 12px var(--accent-green);
+    z-index: 1;
+  }
+
+  .job-card {
+    flex: 1;
+    background: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-xl);
+    padding: 28px;
+    transition: var(--transition);
+    box-shadow: var(--md-sys-elevation-1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .job-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      var(--accent-green),
+      var(--accent-purple)
+    );
+  }
+
+  .job-card:hover {
+    border-color: var(--accent-green);
+    transform: translateY(-4px);
+    box-shadow: var(--md-sys-elevation-4);
+  }
+
+  .job-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .job-title h3 {
+    font: var(--md-sys-typescale-headline-small);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .job-company {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .job-company a {
+    font: var(--md-sys-typescale-title-medium);
+    color: var(--accent-green);
+    font-weight: 600;
+  }
+
+  .job-company a:hover {
+    text-decoration: underline;
+  }
+
+  .job-period {
+    font: var(--md-sys-typescale-label-medium);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .job-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--md-sys-shape-md);
+    background: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    font: var(--md-sys-typescale-label-large);
+    color: var(--text-primary);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .link-pill svg {
+    width: 16px;
+    height: 16px;
+    color: var(--accent-green);
+    flex-shrink: 0;
+  }
+
+  .link-pill:hover {
+    border-color: var(--accent-green);
+    background: var(--md-sys-color-surface-container-highest);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-2);
+  }
+
+  .job-desc {
+    color: var(--text-secondary);
+    font: var(--md-sys-typescale-body-medium);
+    line-height: 1.65;
+    margin: 22px 0 20px;
+  }
+
+  .job-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .job-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-secondary);
+    font: var(--md-sys-typescale-body-medium);
+    line-height: 1.55;
+  }
+
+  .job-bullets .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-green);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .experience {
+      padding: 56px 20px;
+    }
+
+    .job-card {
+      padding: 20px;
+    }
+
+    .experience-header {
+      margin-bottom: 40px;
+    }
+
+    .timeline-item {
+      gap: 12px;
+    }
+
+    .timeline-rail {
+      flex-basis: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .experience {
+      padding: 48px 16px;
+    }
+  }
+</style>

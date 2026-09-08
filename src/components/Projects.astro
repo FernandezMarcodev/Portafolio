@@ -16,17 +16,18 @@ const projects = [
   },
   {
     name: {
-      es: "Carritos Abandonados - Tienda Nube",
-      en: "Abandoned Carts - Tienda Nube",
+      es: "BAsónicos - Buscador de Conciertos",
+      en: "BAsónicos - Concert Finder",
     },
     description: {
-      es: "Sistema que guarda los carritos abandonados y envía notificaciones a los usuarios. Consume la API de Tienda Nube para sincronizar productos y recuperar ventas.",
-      en: "System that saves abandoned carts and sends notifications to users. Consumes the Tienda Nube API to sync products and recover sales.",
+      es: "Buscador de conciertos del Gran Buenos Aires: reúne la grilla de agendade.com.ar, la geolocaliza y la muestra en un mapa interactivo con filtros por artista y por cercanía. Permite seguir artistas y recibir notificaciones push cuando suman fechas nuevas.",
+      en: "Concert search platform for Greater Buenos Aires: aggregates the agendade.com.ar lineup, geolocates it and shows it on an interactive map with filters by artist and proximity. Lets you follow artists and get push notifications when new dates are added.",
     },
-    techStack: ["Python", "FastAPI", "Tienda Nube API", "PostgreSQL"],
-    repo: "https://github.com/FernandezMarcodev/Abandoned-Carts",
-    img: "/assets/images/project-abandonedcarts.jpeg",
-    docs: "/assets/docs/abandoned-carts-docs.pdf",
+    techStack: ["Go", "TypeScript", "React", "PostgreSQL + PostGIS", "Python", "Docker", "Tailwind CSS", "Leaflet", "JWT"],
+    repo: "https://github.com/FernandezMarcodev/BAsonicos",
+    img: "/assets/images/project-basonicos.png",
+    docs: "https://github.com/FernandezMarcodev/BAsonicos/tree/main/docs",
+    site: "https://basonicos-1.onrender.com/app",
   },
 ];
 ---
@@ -54,6 +55,17 @@ const projects = [
           </div>
           <div class="project-info">
             <div class="project-buttons">
+              {project.site && (
+                <a
+                  href={project.site}
+                  target="_blank"
+                  class="btn-site"
+                  data-es="Visitar sitio"
+                  data-en="Visit site"
+                >
+                  Visitar sitio
+                </a>
+              )}
               <a
                 href={project.repo}
                 target="_blank"
@@ -160,6 +172,7 @@ const projects = [
   }
 
   .btn-repo,
+  .btn-site,
   .btn-docs {
     padding: 12px 20px;
     border-radius: var(--md-sys-shape-lg);
@@ -168,6 +181,16 @@ const projects = [
     text-align: center;
     flex: 1;
     min-width: 140px;
+  }
+
+  .btn-site {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+  }
+
+  .btn-site:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-2);
   }
 
   .btn-repo {
@@ -255,6 +278,7 @@ const projects = [
     }
 
     .btn-repo,
+    .btn-site,
     .btn-docs {
       min-width: 100%;
     }

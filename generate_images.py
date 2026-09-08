@@ -40,6 +40,31 @@ d2.rectangle([(60, 430), (725, 450)], fill="#29a745")
 
 img2.save("public/assets/images/project2.jpeg", "JPEG", quality=85)
 
+# Crear imagen 3: BAsónicos - Concert Finder
+img3 = Image.new("RGB", (800, 500), "#0d1117")
+d3 = ImageDraw.Draw(img3)
+d3.rectangle([(0, 0), (800, 500)], fill="#1a1f26")
+d3.rectangle([(50, 70), (750, 140)], outline="#00d4aa", width=3)
+d3.text((50, 90), "BASONICOS", fill="#00d4aa")
+d3.text((700, 90), "GBA", fill="#00d4aa")
+
+d3.text((60, 180), "Concert Finder - Gran Buenos Aires", fill="#c9d1d9")
+d3.text((60, 220), "Go | TypeScript | React | PostGIS | Python", fill="#b2e2a2")
+d3.text((60, 260), "Features: interactive map & geolocation", fill="#c9d1d9")
+d3.text((60, 300), "Filters by artist and proximity", fill="#c9d1d9")
+d3.text((60, 340), "Follow artists + push notifications", fill="#c9d1d9")
+
+# Pin de mapa
+d3.ellipse([(600, 240), (680, 320)], fill="#e0484e")
+d3.polygon([(600, 320), (678, 320), (640, 370)], fill="#e0484e")
+d3.ellipse([(632, 272), (652, 292)], fill="#fff")
+
+d3.rectangle([(60, 430), (750, 450)], outline="#00d4aa", width=2)
+d3.text((290, 433), "PRODUCTION - Deployed on Render", fill="#00d4aa")
+
+img3.save("public/assets/images/project-basonicos.jpeg", "JPEG", quality=85)
+
 print("✓ Imágenes generadas exitosamente!")
 print("  - project1.jpeg")
 print("  - project2.jpeg")
+print("  - project-basonicos.jpeg")

@@ -103,11 +103,11 @@
   --md-sys-color-error: #ba1a1a;
   --md-sys-color-on-error: #ffffff;
   --md-sys-color-surface: #fbfdfb;
-  --md-sys-color-surface-dim: #d9ddd9;
-  --md-sys-color-surface-bright: #fbfdfb;
-  --md-sys-color-surface-container: #eef1ed;
-  --md-sys-color-surface-container-high: #e8ebe7;
-  --md-sys-color-surface-container-highest: #e3e6e2;
+  --md-sys-color-surface-dim: #f0f3f0;
+  --md-sys-color-surface-bright: #ffffff;
+  --md-sys-color-surface-container: #ffffff;
+  --md-sys-color-surface-container-high: #f6f8f6;
+  --md-sys-color-surface-container-highest: #eef1ee;
   --md-sys-color-on-surface: #191c1a;
   --md-sys-color-on-surface-variant: #3f4944;
   --md-sys-color-outline: #6f7973;
